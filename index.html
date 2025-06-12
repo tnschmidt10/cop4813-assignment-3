@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>COP4813 - Assignment 3</title>
+  </head>
+  <body>
+    <p>Name: Thomas Schmidt</p>
+    <p>Major: Computer Science</p>
+    <p>Course: COP4813</p>
+    <p>
+      Message: Hello world! From 6 AM - 12 PM, the picture is of beautiful
+      mountains. From 12 PM - 6 PM, the picture is a sun. From 6 PM - 6 AM, the
+      picture is of the moon.
+    </p>
+
+    <div class="time-display" id="currentTime"></div>
+    <img id="timeImage" class="time-image" src="" />
+
+    <script>
+      function updateTimeAndImage() {
+        const now = new Date();
+        const hour = now.getHours();
+        const timeString = now.toLocaleTimeString();
+
+        document.getElementById(
+          "currentTime"
+        ).textContent = `Current time: ${timeString}`;
+
+        const imageElement = document.getElementById("timeImage");
+        const captionElement = document.getElementById("imageCaption");
+
+        if (hour >= 6 && hour < 12) {
+          imageElement.src =
+            "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=300&fit=crop";
+        } else if (hour >= 12 && hour < 18) {
+          imageElement.src =
+            "https://images.unsplash.com/photo-1525490829609-d166ddb58678?w=800&h=300&fit=crop";
+        } else {
+          imageElement.src =
+            "https://images.unsplash.com/photo-1507502707541-f369a3b18502?w=800&h=300&fit=crop";
+        }
+      }
+
+      updateTimeAndImage();
+      setInterval(updateTimeAndImage, 1000);
+    </script>
+  </body>
+</html>
